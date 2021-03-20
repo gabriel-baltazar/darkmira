@@ -1,0 +1,56 @@
+{
+  "services":[
+    {
+      "id":1,
+      "name":"Gabriel",
+      "description": "Descriçao",
+      "price":"R$ 2500",
+      "date_register":"25/10/2020"    
+    },
+    {
+      "id":2,
+      "name":"Luana",
+      "description": "Descriçao",
+      "price":"R$ 2500",
+      "date_register":"23/10/2020"    
+    },
+    {
+      "id":3,
+      "name":"Flavio",
+      "description": "Descriçao",
+      "price":"R$ 2500",
+      "date_register":"30/10/2020"    
+    }
+  ],
+  
+  "scheduling":[
+    {
+      "id":1,
+      "vehicle_plate":"gtx_5654",
+      "name": "Gabriel",
+      "service_type":"R$ 2500",
+      "description":"descriçao",    
+      "date_time":"descriçao",
+      "status":"Agendado,cancelado,finalizado"
+    },
+    {
+      "id":2,
+      "vehicle_plate":"flx_5654",
+      "name": "Baltazar",
+      "service_type":"R$ 2500",
+      "description":"descriçao",    
+      "date_time":"descriçao",
+      "status":"Agendado,cancelado,finalizado"
+    },
+    {
+      "id":3,
+      "vehicle_plate":"rtx_5654",
+      "name": "Luana",
+      "service_type":"R$ 2500",
+      "description":"descriçao",    
+      "date_time":"descriçao",
+      "status":"Agendado,cancelado,finalizado"
+    }
+    
+  ]
+}
