@@ -1,92 +1,79 @@
-import { Table, Tag, Space} from 'antd';
+import { Table, Space, Button, Mocal} from 'antd';
 import "../pages/assets/Table.css"
-const columns = [
-  {},
-  {
-    title: 'Nome',
-    dataIndex: 'name',
-    key: 'name',
-    render: text => <a>{text}</a>,
-  },
-  {
-    title: 'Placa',
-    dataIndex: 'plate',
-    key: 'plate',
-  },
-  {
-    title: 'Tipo de Atendimento',
-    dataIndex: 'type-service',
-    key: 'type-service',
-  },
-  {
-    title: 'Data e Hora',
-    dataIndex: 'date',
-    key: 'date',
-  },
-  {
-    title: 'Status',
-    key: 'tags',
-    dataIndex: 'tags',
-    render: tags => (
-      <>
-        {tags.map(tag => {
-          let color = tag.length > 5 ? 'geekblue' : 'green';
-          if (tag === 'loser') {
-            color = 'volcano';
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (text, record) => (
-      <Space size="middle">
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
+import { useEffect, useState } from 'react'
+import axios from 'axios';
+const baseUrl = 'http://localhost:3333/scheduling';
 
-const data = [
-  {
-    key: '1',
-    name: 'John Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: 'Jim Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: 'Joe Black',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-];
-function TableAgenda(){
+
+
+const TableAgenda = () =>{
+  const [data, setData] = useState([]);
+  const columns = [
+    {
+      title: 'ID',
+      dataIndex: 'id',
+      key: 'id',
+    },
+    {
+      title: 'Nome',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Placa',
+      dataIndex: 'plate',
+      key: 'plate',
+    },
+    {
+      title: 'Tipo de Atendimento',
+      dataIndex: 'service_type',
+      key: 'service-type',
+    },
+  
+    {
+      title: 'Data e Hora',
+      dataIndex: 'date_time',
+      key: 'date_time',
+    },
+    {
+      title: 'Descrição',
+      dataIndex: 'description',
+      key: 'description',
+    },
+    {
+      title: 'Ação',
+      key: 'action',
+      render: (fila) => (
+        <> 
+        <Button type="primary">Editar</Button>{" "}
+        <Button type="primary" danger>
+          Deletar
+        </Button>
+        
+        </>
+      ),
+    },
+  ];
+  const dataGet=async()=>{
+    await axios.get(baseUrl)
+    .then(response=>{
+      setData(response.data)
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+  useEffect(()=>{
+    dataGet();
+  },[])
+  
   return(
- 
     <>
-    <section>
-      <h1 className="centralizar">Agendamentos</h1>
-      <Table columns={columns} dataSource={data} />
-      </section>
+      <div>
+      <h1 className="centralizar">Serviços agendados</h1>
+      
+        <Table columns={columns} pagination={{position:['bottomCenter']}}dataSource={data} />/
+        </div>
    </>
   )
 }
-
 export default TableAgenda

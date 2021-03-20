@@ -3,11 +3,8 @@ import Nav from "./components/Nav"
 import Agendamento from "./pages/Agendamento"
 import Adm from "./pages/Adm"
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-
-
 function App (){
   return(
-  
     <BrowserRouter>
     <Nav/>
     <Switch>

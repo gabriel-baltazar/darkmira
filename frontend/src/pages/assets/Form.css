@@ -1,12 +1,20 @@
 .form {
-  margin-top: 100px;
- 
+  margin:0 auto;
+  display:block;
+  width: 40%;
+  
+  
 }
-.ant-layout form{
-  background:#fff;
+
+.fundo {
+  background: #001529 !important;
+  padding: 100px;
+  padding-bottom: 200px;
+  border-radius: 40px !important;
+  
 }
 
 .title {
-  background: #fff;
   text-align: center;
+  color: white;
 }
