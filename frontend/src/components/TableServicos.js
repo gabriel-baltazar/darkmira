@@ -40,8 +40,8 @@ const TableServicos = () =>{
       key: 'action',
       render: (fila) => (
         <> 
-        <Button type="primary">Editar</Button>{" "}
-        <Button type="primary" danger>
+        <Button type="primary" onClick={()=>selecionarService(fila, "Editar")}>Editar</Button>{" "}
+        <Button type="primary" danger onClick={()=>selecionarService(fila,"Deletar")}>
           Deletar
         </Button>
         
@@ -51,6 +51,8 @@ const TableServicos = () =>{
   ];
   
   const [modalService,setmodalService]= useState(false);
+  const [modalEditar,setmodalEditar]= useState(false);
+  const [modalDeletar,setmodalDeletar]= useState(false);
   const [services, setService] = useState({
   id: '',
   name:'',
@@ -61,12 +63,22 @@ const TableServicos = () =>{
   const openModalServico = () => {
     setmodalService(!modalService);
   }
+  const openModalEditar = () => {
+    setmodalEditar(!modalEditar);
+  }
+  const openModalDeletar = () => {
+    setmodalDeletar(!modalDeletar);
+  }
   const handleChange=e=>{
     const {name, value}=e.target;
     setService({...services,
     [name]:value});
     console.log(services)
   }
+  const selecionarService=(services, caso) =>{
+  setService(services);
+  (caso === "Editar")?openModalEditar():openModalDeletar()
+}
   const dataGet=async()=>{
     await axios.get(baseUrl)
     .then(response=>{
@@ -85,9 +97,36 @@ const TableServicos = () =>{
       console.log(error);
     })
   }
+  const dataPut=async()=>{
+    await axios.put(baseUrl+"/"+services.id,services)
+    .then(response=>{
+      var dataAuxiliar=data;
+      dataAuxiliar.map(elemento=>{
+      if(elemento.id === services.id){
+      elemento.name=services.name;
+      elemento.price=services.price;
+      elemento.date_register=services.date_register;
+      }
+      })
+      setData(dataAuxiliar)
+      openModalEditar();
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
+  const dataDelete=async()=>{
+    await axios.delete(baseUrl+"/"+services.id)
+    .then(response=>{
+      setData(data.filter(elemento=>elemento.id!==services.id))
+      openModalDeletar();
+    }).catch(error=>{
+      console.log(error);
+    })
+  }
   useEffect(()=>{
     dataGet();
   },[])
+
   return(
  
     <>
@@ -122,6 +161,43 @@ footer={[
  
  
 </Form>
+</Modal>
+<Modal
+visible={modalEditar}
+title="Editar Serviço"
+onCancel={openModalEditar}
+centered
+footer={[
+ <Button onClick={openModalEditar}>Cancelar </Button>,
+ <Button type="primary" onClick={dataPut}>Editar</Button>
+]}
+>
+<Form>
+ <Item>
+   <Input name="name" placeholder="Nome" onChange={handleChange} value={services && services.name}/>
+ </Item>
+ <Item>
+ <Input name="price" prefix="R$" placeholder="Preço" onChange={handleChange} value={services && services.price} />
+ </Item>
+ <Item>
+ <Input name="date_register" type="Date" placeholder="Data de Cadastro" onChange={handleChange} value={services && services.date_register} />
+ </Item>
+ <Item>
+ <Input name="description" showCount maxLength={100} placeholder="Descrição" onChange={handleChange} value={services && services.description} />
+ </Item>
+</Form>
+</Modal>
+<Modal
+visible={modalDeletar}
+title="Deletar Serviço"
+onCancel={openModalDeletar}
+centered
+footer={[
+ <Button onClick={openModalDeletar}>Não</Button>,
+ <Button type="primary" danger onClick={dataDelete}>Sim</Button>
+]}
+>
+Deseja realmente deletar o serviço de <b>{services&&services.name}</b>?
 </Modal>
 </div>
       <h1 className="centralizar">Serviços</h1>

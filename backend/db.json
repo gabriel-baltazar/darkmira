@@ -1,105 +1,31 @@
 {
   "services": [
     {
-      "id": 1,
-      "name": "Gabriel",
-      "price": "R$ 2500",
-      "date_register": "25/10/2020",
-      "description": "Descriçao"
-    },
-    {
-      "id": 2,
-      "name": "Luana",
-      "price": "R$ 2500",
-      "date_register": "23/10/2020",
-      "description": "Descriçao"
-    },
-    {
-      "id": 3,
-      "name": "Flavio",
-      "price": "R$ 2500",
-      "date_register": "30/10/2020",
-      "description": "Descriçao"
-    },
-    {
-      "name": "Teste",
-      "price": "2000",
-      "date_register": "2021-03-27",
-      "description": "teste",
-      "id": 4
-    },
-    {
-      "name": "dsd",
-      "price": "23323",
-      "date_register": "2021-03-20",
-      "description": "sdsd",
-      "id": 5
-    },
-    {
-      "name": "zdzx",
-      "price": "2w323",
-      "date_register": "2021-03-09",
-      "description": "sdssd",
-      "id": 6
-    },
-    {
-      "name": "asdasd",
-      "price": "232",
-      "date_register": "2021-03-17",
-      "description": "sdads",
-      "id": 7
-    },
-    {
-      "name": "sdsd",
-      "price": "23232",
-      "date_register": "2021-03-12",
-      "description": "dfdfd",
-      "id": 8
-    },
-    {
-      "name": "Gabriel Baltazar",
-      "price": "2323",
-      "date_register": "2021-04-02",
-      "description": "wew",
-      "id": 9
+      "name": "Troca do motor",
+      "price": "3500",
+      "date_register": "2021-03-21",
+      "description": "Trocar motor completo",
+      "id": 1
     }
   ],
   "scheduling": [
     {
-      "id": 1,
-      "name": "Gabriel",
-      "plate": "gtx_5654",
-      "service_type": "carro",
-      "date_time": "descriçao",
-      "description": "descriçao",
-      "status": ""
-    },
-    {
-      "id": 2,
-      "plate": "flx_5654",
-      "name": "Baltazar",
-      "service_type": "carro",
-      "date_time": "descriçao",
-      "description": "descriçao",
-      "status": ""
-    },
-    {
-      "id": 3,
-      "plate": "rtx_5654",
-      "name": "Luana",
-      "service_type": "carro",
-      "date_time": "descriçao",
-      "description": "descriçao",
-      "status": ""
-    },
-    {
-      "name": "sadads",
-      "plate": "sdsdsd",
+      "name": "Gabriel Baltazar",
+      "plate": "GTX - 5566 ",
       "service_type": "",
-      "date_time": "",
-      "description": "sdsdsdwdwwwddw",
+      "date_time": "2021-03-21T02:26",
+      "description": "Testando ",
       "status": "Em andamento",
-      "id": 4
+      "id": 1
+    },
+    {
+      "name": "Testando",
+      "plate": "Teste- 2365",
+      "service_type": "",
+      "date_time": "2021-03-21T02:27",
+      "description": "testando",
+      "status": "Em andamento",
+      "id": 2
     }
   ]
 }
