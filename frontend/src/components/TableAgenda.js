@@ -103,7 +103,7 @@ const TableAgenda = () =>{
       elemento.plate=agenda.plate;
       elemento.service_type=agenda.service_type;
       elemento.date_time=agenda.date_time;
-      elemento.description=agenda.date_time;
+      elemento.description=agenda.description;
       }
       })
       setData(dataAuxiliar)

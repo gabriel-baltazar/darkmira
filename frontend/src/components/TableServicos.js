@@ -106,6 +106,7 @@ const TableServicos = () =>{
       elemento.name=services.name;
       elemento.price=services.price;
       elemento.date_register=services.date_register;
+      elemento.description=services.description;
       }
       })
       setData(dataAuxiliar)
